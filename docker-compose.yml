@@ -1,0 +1,13 @@
+services:
+  localstack:
+    image: localstack/localstack
+    ports:
+      - "4566-4599:4566-4599"
+    environment:
+      - SERVICES=s3,lambda,apigateway,cloudformation,cloudwatch,sqs,iam
+      - DEBUG=1
+      - DATA_DIR=/tmp/localstack/data
+      - PORT_WEB_UI=8080
+    volumes:
+      - "${TMPDIR:-/tmp/localstack}:/tmp/localstack"
+  

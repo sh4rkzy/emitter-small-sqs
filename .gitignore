@@ -1,0 +1,29 @@
+# === GO (Golang) ===
+/bin/
+/build/
+/dist/
+*.exe
+*.test
+*.out
+
+# Go modules
+/go.sum
+/go.mod~
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+
+# === Terraform ===
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
+*.tfplan
+
+# Variáveis sensíveis (nunca versionar)
+.env
+
+# Logs temporários
+*.log
