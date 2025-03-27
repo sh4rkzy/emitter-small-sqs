@@ -10,4 +10,19 @@ services:
       - PORT_WEB_UI=8080
     volumes:
       - "${TMPDIR:-/tmp/localstack}:/tmp/localstack"
-  
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - localstack
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
