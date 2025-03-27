@@ -23,10 +23,12 @@ func (s SQSSender) SendEvent(event domain.Event) error {
 	if err != nil {
 		return err
 	}
+	ctx := context.Background()
 
-	_, err = s.Client.SendMessage(context.TODO(), &sqs.SendMessageInput{
+	_, err = s.Client.SendMessage(ctx, &sqs.SendMessageInput{
 		MessageBody: aws.String(string(eventBytes)),
 		QueueUrl:    aws.String(s.QueuURL),
+		MessageGroupId:  aws.String("logistics-events"),
 	})
 	if err != nil {
 		return err
